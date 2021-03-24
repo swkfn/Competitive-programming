@@ -6,11 +6,13 @@ ll mod = 1000000007;
 int main() {
     int s;
     cin >> s;
-    if (s < 3) {
-        cout << 0 << endl;
-        return 0;
+    vector<ll> dp(s + 1, 0);
+    dp[0] = 1;
+    for (int i = 1; i <= s; i++) {
+        for (int j = 0; j <= i - 3; j++) {
+            dp[i] = (dp[i] + dp[j]) % mod;
+        }
     }
-    8
-    3, 5 5, 3 4, 4 8
+    cout << dp[s] % mod << endl;
     return 0;
 }
